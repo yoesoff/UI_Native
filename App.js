@@ -9,7 +9,7 @@ class LogoTitle extends React.Component {
   render() {
     return (
       <View>
-          <Text> Confirm Order</Text>
+          <Text> {this.props.title}</Text>
       </View>
     );
   }
@@ -17,7 +17,7 @@ class LogoTitle extends React.Component {
 
 class ConfirmOrderScreen extends React.Component {
   static navigationOptions = {
-    headerTitle: <LogoTitle />,
+    headerTitle: <LogoTitle title='Confirm Order' />,
   };
 
   state = {
@@ -126,10 +126,13 @@ class ConfirmOrderScreen extends React.Component {
               <View style={{flex:1, padding: 5, flexDirection: 'column'}}>
                 <Text style={{fontWeight: "bold"}}>Responsible for Payment</Text>
                 {/* Who pay ? */}
-                <View style={{flex:1, alignItems: 'center', padding: 5, flexDirection: 'row'}}>
+                <View style={{flex:1, padding: 5}}>
                   <RadioGroup radioButtons={this.state.payer} onPress={this.onPress} flexDirection='row' />
                 </View>
               </View>
+
+              {/* Spacer line */}
+              <View style={{margin: 5,borderBottomColor: '#EFF0F1', borderBottomWidth: 1}}/>
 
               {/* Responsible for Payment */}
               <View style={{flex:1, padding: 5, flexDirection: 'column'}}>
@@ -143,7 +146,7 @@ class ConfirmOrderScreen extends React.Component {
                   </View>
 
                   {/* Spacer line */}
-                  <View style={{margin: 15, borderLeftColor: '#EFF0F1', borderLeftWidth: 1}}/>
+                  <View style={{margin: 15, borderLeftWidth: 1}}/>
 
                   <View style={{width: 50, height: 50, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}} >
                     <Icon name="money" size={35} color="#bc8921" />
@@ -151,7 +154,7 @@ class ConfirmOrderScreen extends React.Component {
                   </View>
 
                   {/* Spacer line */}
-                  <View style={{margin: 15, borderLeftColor: '#EFF0F1', borderLeftWidth: 1}}/>
+                  <View style={{margin: 15, borderLeftWidth: 1}}/>
 
                   <View style={{width: 50, height: 50, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}} >
                     <Icon name="credit-card" size={35} color="#bc8921" />
@@ -175,31 +178,42 @@ class ConfirmOrderScreen extends React.Component {
 
 class PickUpLocationScreen extends React.Component {
   static navigationOptions = {
-    headerTitle: <LogoTitle />,
+    headerTitle: <LogoTitle title='Pick Up Location'/>,
   };
 
   render() {
     return (
       <ScrollView style={{flex: 1}}>
-        <ScrollView style={{flex: 1, backgroundColor: '#EAF0F3'}}>
-          {/* Your Package Photo (+)*/}
-          <View style={{flex:1, alignItems: 'center', flexDirection: 'row', backgroundColor: 'white', height: 50}}>
-            <Icon name="map-marker" size={30} color="#6b07bc" />
-            <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
+        <ScrollView style={{flex: 1}}>
+          {/* Pick up location */}
+          <View style={{backgroundColor: 'white'}}>
+            <View style={{flex:1, margin:17, padding: 5, alignItems: 'center',
+                  borderWidth: 1, flexDirection: 'row', height: 50}}>
+              <Icon name="map-marker" size={30} color="#6b07bc" />
+              <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
+            </View>
           </View>
         </ScrollView>
         
          {/* Spacer */}
          <View style={{margin: 5}}/>
         
-        <ScrollView style={{flex: 1, backgroundColor: '#EAF0F3'}}>
+        <ScrollView style={{flex: 1, backgroundColor: '#EAF0F3',  height: '100%'}}>
           <View style={{
           flex: 1,
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center' }}>
 
-            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'powderblue'}}>
+            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'white'}}>
+              <Icon name="gear" size={30} color="#6b07bc" />
+              <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
+            </View>
+
+            {/* Spacer */}
+            <View style={{margin: 5}}/>
+
+            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'white'}}>
               <Icon name="map-marker" size={30} color="#6b07bc" />
               <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
             </View>
@@ -207,41 +221,45 @@ class PickUpLocationScreen extends React.Component {
             {/* Spacer */}
             <View style={{margin: 5}}/>
 
-            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'powderblue'}}>
-              <Icon name="map-marker" size={30} color="#6b07bc" />
-              <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
+            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'white'}}>
+              <View style={{flex:2, marginLeft:15, flexDirection: 'column'}}>
+                <Text style={{fontWeight: "bold"}}>Home</Text>
+                <Text style={{color: "#E8EDF2"}}>Pick Up Location</Text>
+              </View>  
+              <Icon name="star" size={30} color="yellow" />
             </View>
 
             {/* Spacer */}
             <View style={{margin: 5}}/>
 
-            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'powderblue'}}>
-              <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
-              <Icon name="start" size={30} color="#6b07bc" />
+            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'white'}}>
+              <View style={{flex:2, marginLeft:15, flexDirection: 'column'}}>
+                <Text style={{fontWeight: "bold"}}>Work</Text>
+                <Text style={{color: "#E8EDF2"}}>Pick Up Location</Text>
+              </View>  
+              <Icon name="star" size={30} color="yellow" />
             </View>
 
             {/* Spacer */}
             <View style={{margin: 5}}/>
 
-            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'powderblue'}}>
-              <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
-              <Icon name="start" size={30} color="#6b07bc" />
+            <View style={{flex:1, padding:5,flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'white'}}>
+              <View style={{flex:2, marginLeft:15, flexDirection: 'column'}}>
+                <Text style={{fontWeight: "bold"}}>Daily Market</Text>
+                <Text style={{color: "#E8EDF2"}}>Pick Up Location</Text>
+              </View>  
+              <Icon name="star" size={30} color="#E8EDF2" />
             </View>
 
             {/* Spacer */}
             <View style={{margin: 5}}/>
 
-            <View style={{flex:1, padding:5,flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'powderblue'}}>
-              <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
-              <Icon name="start" size={30} color="#6b07bc" />
-            </View>
-
-            {/* Spacer */}
-            <View style={{margin: 5}}/>
-
-            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'powderblue'}}>
-              <Text style={{flex: 2, marginLeft:15}}>Pick Up Location</Text>
-              <Icon name="start" size={30} color="#6b07bc" />
+            <View style={{flex:1, padding:5, flexDirection: 'row', alignItems: 'center', width: '90%', height: 50, backgroundColor: 'white'}}>
+              <View style={{flex:2, marginLeft:15, flexDirection: 'column'}}>
+                <Text style={{fontWeight: "bold"}}>Hospital</Text>
+                <Text style={{color: "#E8EDF2"}}>Pick Up Location</Text>
+              </View>  
+              <Icon name="star" size={30} color="#E8EDF2" />
             </View>
           
           </View>
@@ -252,7 +270,7 @@ class PickUpLocationScreen extends React.Component {
   }
 };
 
-const RootStack = createStackNavigator(
+const ApplicationStack = createStackNavigator(
   {
     Order: ConfirmOrderScreen,
     PickUp: PickUpLocationScreen
@@ -271,6 +289,6 @@ const RootStack = createStackNavigator(
 
 export default class App extends React.Component {
   render() {
-    return <RootStack />;
+    return <ApplicationStack />;
   }
 }
